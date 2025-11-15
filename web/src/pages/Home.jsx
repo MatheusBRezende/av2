@@ -57,7 +57,7 @@ export function Home() {
           variant="primary"
           data-testid="new-student-btn"
         >
-          Novo Aluno
+          + Novo Aluno
         </Button>
       </div>
 
