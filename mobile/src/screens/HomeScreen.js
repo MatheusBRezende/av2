@@ -95,10 +95,16 @@ export default function HomeScreen({ navigation }) {
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Lista de Alunos</Text>
-        <Text style={styles.subtitle}>
-          {students.length} aluno(s) cadastrado(s)
-        </Text>
+        <TouchableOpacity 
+          style={styles.addButton}
+          onPress={() => navigation.navigate('AddStudent')}
+        >
+          <Text style={styles.addButtonText}>+ Novo</Text>
+        </TouchableOpacity>
       </View>
+      <Text style={styles.subtitle}>
+        {students.length} aluno(s) cadastrado(s)
+      </Text>
 
       {error ? (
         <View style={styles.errorContainer}>
@@ -122,9 +128,12 @@ export default function HomeScreen({ navigation }) {
           ListEmptyComponent={
             <View style={styles.emptyContainer}>
               <Text style={styles.emptyText}>Nenhum aluno cadastrado</Text>
-              <Text style={styles.emptySubtext}>
-                Arraste para baixo para atualizar
-              </Text>
+              <TouchableOpacity 
+                style={styles.addButtonEmpty}
+                onPress={() => navigation.navigate('AddStudent')}
+              >
+                <Text style={styles.addButtonText}>Adicionar Primeiro Aluno</Text>
+              </TouchableOpacity>
             </View>
           }
           contentContainerStyle={styles.listContent}
@@ -150,16 +159,39 @@ const styles = StyleSheet.create({
     padding: 20,
     borderBottomWidth: 1,
     borderBottomColor: '#e0e0e0',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     color: '#1a1a1a',
-    marginBottom: 4,
   },
   subtitle: {
     fontSize: 14,
     color: '#666',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    backgroundColor: 'white',
+  },
+  addButton: {
+    backgroundColor: '#007AFF',
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderRadius: 20,
+  },
+  addButtonEmpty: {
+    backgroundColor: '#007AFF',
+    paddingHorizontal: 20,
+    paddingVertical: 12,
+    borderRadius: 8,
+    marginTop: 16,
+  },
+  addButtonText: {
+    color: 'white',
+    fontWeight: '600',
+    fontSize: 14,
   },
   loadingText: {
     marginTop: 12,
@@ -222,10 +254,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#666',
     marginBottom: 8,
-  },
-  emptySubtext: {
-    fontSize: 14,
-    color: '#999',
   },
   errorContainer: {
     alignItems: 'center',

@@ -42,7 +42,7 @@ export default function StudentDetailScreen({ route, navigation }) {
             try {
               await alunosAPI.delete(studentId);
               Alert.alert('Sucesso', 'Aluno excluído com sucesso!', [
-                { text: 'OK', onPress: () => navigation.goBack() },
+                { text: 'OK', onPress: () => navigation.navigate('Home') },
               ]);
             } catch (error) {
               Alert.alert('Erro', 'Não foi possível excluir o aluno.');
@@ -137,7 +137,7 @@ export default function StudentDetailScreen({ route, navigation }) {
         <View style={styles.actions}>
           <TouchableOpacity 
             style={[styles.button, styles.editButton]}
-            onPress={() => Alert.alert('Info', 'Funcionalidade de edição em desenvolvimento')}
+            onPress={() => navigation.navigate('EditStudent', { student })}
           >
             <Text style={styles.buttonText}>Editar Aluno</Text>
           </TouchableOpacity>
@@ -255,7 +255,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   editButton: {
-    backgroundColor: '#007AFF',
+    backgroundColor: '#ffc107',
   },
   deleteButton: {
     backgroundColor: '#ff3b30',

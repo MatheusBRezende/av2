@@ -3,6 +3,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './src/screens/HomeScreen';
 import StudentDetailScreen from './src/screens/StudentDetailScreen';
+import AddStudentScreen from './src/screens/AddStudentScreen';
+import EditStudentScreen from './src/screens/EditStudentScreen';
 
 const Stack = createStackNavigator();
 
@@ -35,7 +37,21 @@ export default function App() {
             title: 'Detalhes do Aluno'
           }}
         />
+        <Stack.Screen 
+          name="AddStudent" 
+          component={AddStudentScreen}
+          options={{ 
+            title: 'Novo Aluno'
+          }}
+        />
+        <Stack.Screen 
+          name="EditStudent" 
+          component={EditStudentScreen}
+          options={{ 
+            title: 'Editar Aluno'
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
-}         
+}
